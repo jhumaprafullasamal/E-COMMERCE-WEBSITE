@@ -15,14 +15,14 @@ const app = express()
 connectDB()
 connectCloudinary()
 
-// middlewares
-app.use(express.json())
-import cors from 'cors'
-
+// ✅ CORS CONFIG (TOP PE HI RAKHO)
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://e-commerce-website-zhps.vercel.app" // backend itself
+  "https://e-commerce-website-zhps.vercel.app"
 ]
+
+// middlewares
+app.use(express.json())
 
 app.use(cors({
   origin: allowedOrigins,
@@ -38,10 +38,7 @@ app.use('/api/order', orderRouter)
 // test route
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
-});
+})
 
-// ❌ REMOVE THIS:
-// app.listen(...)
-
-// ✅ ADD THIS:
-export default app;
+// export for vercel
+export default app
