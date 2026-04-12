@@ -51,7 +51,7 @@ connectCloudinary()
 // CORS CONFIG
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://e-commerce-website-zhps.vercel.app"
+  "https://e-commerce-frontend-seven-gamma.vercel.app"  // ✅ your actual frontend
 ]
 
 // Middlewares
