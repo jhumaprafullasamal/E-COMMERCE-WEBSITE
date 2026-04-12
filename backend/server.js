@@ -31,7 +31,6 @@
 
 // app.listen(port, () => console.log('Server started on PORT : ' + port))
 
-
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
@@ -49,7 +48,7 @@ const app = express()
 connectDB()
 connectCloudinary()
 
-// ✅ CORS CONFIG
+// CORS CONFIG
 const allowedOrigins = [
   "http://localhost:5173",
   "https://e-commerce-website-zhps.vercel.app"
@@ -71,6 +70,12 @@ app.use('/api/order', orderRouter)
 // Test Route
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
+})
+
+// ✅ REQUIRED FOR RENDER — must listen on a port
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
 
 export default app
