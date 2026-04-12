@@ -12,22 +12,12 @@ import orderRouter from './routes/orderRoute.js'
 const app = express()
 
 // connect DB & cloudinary
-connectDB()
-connectCloudinary()
-
-// ✅ CORS CONFIG (TOP PE HI RAKHO)
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://e-commerce-website-zhps.vercel.app"
-]
+// connectDB()
+// connectCloudinary()
 
 // middlewares
 app.use(express.json())
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}))
+app.use(cors())
 
 // api endpoints
 app.use('/api/user', userRouter)
@@ -38,7 +28,10 @@ app.use('/api/order', orderRouter)
 // test route
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
-})
+});
 
-// export for vercel
-export default app
+// ❌ REMOVE THIS:
+// app.listen(...)
+
+// ✅ ADD THIS:
+export default app;
